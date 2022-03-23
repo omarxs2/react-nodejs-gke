@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: react-webapp
-  name: react-webapp
+  name: omar-react-webapp
 spec:
   replicas: 5
   selector:
@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - image: gcr.io/staticweb-test/react-webapp:v1
-        name: webapp
+        name: omar-webapp
         imagePullPolicy: Always
         resources: {}
         ports:
@@ -31,7 +31,7 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  name: react-webapp
+  name: omar-react-webapp
   labels:
     run: react-webapp
 spec:
