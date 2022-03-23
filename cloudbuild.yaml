@@ -16,9 +16,9 @@ steps:
 
 ### Build
 
-  # - id: 'build'
-  #   name: 'gcr.io/cloud-builders/docker'
-  #   args: [ 'build', '-t', 'gcr.io/devops-analiza/omar-react-image:latest', '.' ]
+  - id: 'build'
+    name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '-t', 'gcr.io/devops-analiza/omar-react-image:latest', '.' ]
 
 
 
