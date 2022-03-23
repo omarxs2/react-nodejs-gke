@@ -13,11 +13,12 @@
 # limitations under the License.
 
 steps:
+
 ### Build
+
   - id: 'build'
     name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'gcr.io/devops-analiza/omar-react-image:v1', '.' ]
-
+    args: [ 'build', '-t', 'gcr.io/devops-analiza/omar-react-image:latest', '.' ]
 
 ### Publish
   - id: 'publish'
@@ -26,21 +27,26 @@ steps:
     args: 
       - '-c'
       - |
-          docker push gcr.io/devops-analiza/omar-react-image:v1
+          docker push gcr.io/devops-analiza/omar-react-image:latest
 
 ### Deploy
   - id: 'deploy'
     name: 'gcr.io/cloud-builders/gcloud'
+    env:
+      - 'KUBECONFIG=/kube/config'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
           PROJECT=devops-analiza
-
+        
+          
           gcloud container clusters get-credentials "omar-cluster" \
             --project "devops-analiza" \
             --zone "us-west2-a" 
-
+          
+          sed -i 's|gcr.io/devops-analiza/omar-react-image:.*|gcr.io/devops-analiza/omar-react-image:latest|' manifest.yml
+          
           kubectl apply -f manifest.yml
 
 ### Timeout
