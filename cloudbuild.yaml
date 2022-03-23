@@ -31,8 +31,6 @@ steps:
 ### Deploy
   - id: 'deploy'
     name: 'gcr.io/cloud-builders/gcloud'
-    env:
-      - 'KUBECONFIG=/kube/config'
     entrypoint: 'bash'
     args:
       - '-c'
@@ -45,6 +43,7 @@ steps:
 
           kubectl apply -f manifest.yml
 
+### Timeout
 timeout: "1600s"
 options:
  logging: CLOUD_LOGGING_ONLY
