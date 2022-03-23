@@ -21,11 +21,11 @@
 
 steps:
 
-### Build
+# ### Build
 
-  - id: 'build'
-    name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'gcr.io/devops-analiza/omar-react-image:latest', '.' ]
+#   - id: 'build'
+#     name: 'gcr.io/cloud-builders/docker'
+#     args: [ 'build', '-t', 'gcr.io/devops-analiza/omar-react-image:latest', '.' ]
 
 
 
@@ -60,7 +60,7 @@ steps:
             --project "devops-analiza" \
             --zone "us-west2-a"  
 
-          sed -i 's|gcr.io/devops-analiza/omar-react-image:.*|gcr.io/devops-analiza/omar-react-image|' ./manifest.yaml
+          sed -i 's|gcr.io/devops-analiza/omar-react-image:.*|gcr.io/devops-analiza/omar-react-image|' manifest.yaml
 
           kubectl create ns latest
           kubectl get ns latest
