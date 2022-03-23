@@ -47,3 +47,6 @@ steps:
           kubectl get ns v1 || kubectl create ns v1
           kubectl apply --namespace v1 --recursive -f k8s/deployments/dev
           kubectl apply --namespace v1 --recursive -f k8s/services
+
+options:
+ logging: CLOUD_LOGGING_ONLY
