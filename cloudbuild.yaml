@@ -60,7 +60,7 @@ steps:
             --project "devops-analiza" \
             --zone "us-west2-a"  
 
-          sed -i 's|gcr.io/devops-analiza/omar-react-image:.*|gcr.io/devops-analiza/omar-react-image|' manifest.yaml
+          sed -i 's|gcr.io/devops-analiza/omar-react-image:.*|gcr.io/devops-analiza/omar-react-image:latest|' manifest.yaml
 
           kubectl create ns latest
           kubectl get ns latest
