@@ -21,25 +21,25 @@
 
 steps:
 
-# ### Build
+### Build
 
-#   - id: 'build'
-#     name: 'gcr.io/cloud-builders/docker'
-#     args: [ 'build', '-t', 'gcr.io/devops-analiza/omar-react-image:latest', '.' ]
+  - id: 'build'
+    name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '-t', 'gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}', '.' ]
 
 
 
 ### Test
 
 
-# ### Publish
-#   - id: 'publish'
-#     name: 'gcr.io/cloud-builders/docker'
-#     entrypoint: 'bash'
-#     args: 
-#       - '-c'
-#       - |
-#           docker push gcr.io/devops-analiza/omar-react-image
+### Publish
+  - id: 'publish'
+    name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args: 
+      - '-c'
+      - |
+          docker push gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}
 
 
 
@@ -60,10 +60,10 @@ steps:
             --project "devops-analiza" \
             --zone "us-west2-a"  
 
-          sed -i 's|gcr.io/devops-analiza/omar-react-image:.*|gcr.io/devops-analiza/omar-react-image:latest|' manifest.yaml
+          sed -i 's|gcr.io/devops-analiza/omar-react-image:.*|gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}|' manifest.yaml
 
-          kubectl get ns latest
-          kubectl apply --namespace latest --recursive -f manifest.yaml
+          kubectl get ns production || kubectl create ns production
+          kubectl apply --namespace production --recursive -f manifest.yaml
 timeout: "1600s"
 options:
  logging: CLOUD_LOGGING_ONLY
