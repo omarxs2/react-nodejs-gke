@@ -55,7 +55,7 @@ steps:
             --project "devops-analiza" \
             --zone "us-west2-a" 
           
-          sed -i 's|gcr.io/devops-analiza/omar-react-image:.*|gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}|' manifest.yml
+          sed -i 's|gcr.io/devops-analiza/omar-react-image:latest|gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}|' manifest.yml
           
           kubectl apply -f manifest.yml
 timeout: "1600s"
