@@ -18,7 +18,7 @@ steps:
 
   - id: 'build'
     name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'gcr.io/devops-analiza/omar-react-image:latest', '.' ]
+    args: [ 'build', '-t', 'gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}', '.' ]
 
 ### Publish
   - id: 'publish'
@@ -27,7 +27,7 @@ steps:
     args: 
       - '-c'
       - |
-          docker push gcr.io/devops-analiza/omar-react-image:latest
+          docker push gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}
 
 ### Deploy
   - id: 'deploy'
@@ -45,7 +45,7 @@ steps:
             --project "devops-analiza" \
             --zone "us-west2-a" 
           
-          sed -i 's|gcr.io/devops-analiza/omar-react-image:.*|gcr.io/devops-analiza/omar-react-image:latest|' manifest.yml
+          sed -i 's|gcr.io/devops-analiza/omar-react-image:.*|gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}|' manifest.yml
           
           kubectl apply -f manifest.yml
 
