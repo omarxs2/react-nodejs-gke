@@ -58,7 +58,7 @@ steps:
           sed -i 's|gcr.io/devops-analiza/omar-react-image:.*|gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}|' manifest.yml
           
           kubectl get ns production || kubectl create ns production
-          kubectl apply --namespace production --recursive -f devops-analiza/github_omarxs2_react-nodejs-gke/main/manifest.yml
+          kubectl apply --namespace production --recursive -f devops-analiza/github_omarxs2_react-nodejs-gke/main
 timeout: "1600s"
 options:
  logging: CLOUD_LOGGING_ONLY
