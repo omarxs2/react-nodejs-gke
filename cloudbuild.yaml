@@ -14,27 +14,27 @@
 
 steps:
 
-### Build
+# ### Build
 
-### Build
+# ### Build
 
-  - id: 'build'
-    name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}', '.' ]
-
-
-
-### Test
+#   - id: 'build'
+#     name: 'gcr.io/cloud-builders/docker'
+#     args: [ 'build', '-t', 'gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}', '.' ]
 
 
-### Publish
-  - id: 'publish'
-    name: 'gcr.io/cloud-builders/docker'
-    entrypoint: 'bash'
-    args: 
-      - '-c'
-      - |
-          docker push gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}
+
+# ### Test
+
+
+# ### Publish
+#   - id: 'publish'
+#     name: 'gcr.io/cloud-builders/docker'
+#     entrypoint: 'bash'
+#     args: 
+#       - '-c'
+#       - |
+#           docker push gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}
 
 
 
@@ -58,7 +58,7 @@ steps:
           sed -i 's|gcr.io/devops-analiza/omar-react-image:.*|gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}|' manifest.yml
           
           kubectl get ns production || kubectl create ns production
-          kubectl apply --namespace production --recursive
+          kubectl apply --namespace production --recursive -f /
 timeout: "1600s"
 options:
  logging: CLOUD_LOGGING_ONLY
