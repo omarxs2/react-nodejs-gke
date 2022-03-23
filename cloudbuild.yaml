@@ -25,11 +25,7 @@ steps:
 
   - id: 'build'
     name: 'gcr.io/cloud-builders/docker'
-    entrypoint: 'bash'
-    args: 
-      - '-c'
-      - |
-          gcloud builds submit --tag gcr.io/devops-analiza/omar-react-image:latest  
+    args: [ 'build', '-t', 'gcr.io/devops-analiza/omar-react-image:latest', '.' ]
 
 
 
