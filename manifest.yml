@@ -10,17 +10,15 @@ spec:
   selector:
     matchLabels:
       app: react-webapp
-      env: production
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
         app: react-webapp
-        env: production
     spec:
       containers:
-      - image: gcr.io/devops-analiza/omar-react-image:1.0.0
+      - image: gcr.io/devops-analiza/omar-react-image
         name: omar-webapp
         imagePullPolicy: Always
         resources: {}
