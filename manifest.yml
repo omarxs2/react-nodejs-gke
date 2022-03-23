@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: omar-react-webapp
+    app: react-webapp
   name: omar-react-webapp
 spec:
   replicas: 5
@@ -15,7 +15,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app: omar-react-webapp
+        app: react-webapp
     spec:
       containers:
       - image: gcr.io/staticweb-test/react-webapp:v1
@@ -33,11 +33,11 @@ kind: Service
 metadata:
   name: omar-react-webapp
   labels:
-    run: omar-react-webapp
+    run: react-webapp
 spec:
   ports:
   - port: 3080
     protocol: TCP
   selector:
-    app: omar-react-webapp
+    app: react-webapp
   type: LoadBalancer
