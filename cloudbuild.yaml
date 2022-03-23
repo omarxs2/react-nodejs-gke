@@ -16,23 +16,21 @@ steps:
 
 ### Build
 
-  - id: 'build'
+  # - id: 'build'
+  #   name: 'gcr.io/cloud-builders/docker'
+  #   args: [ 'build', '-t', 'gcr.io/devops-analiza/omar-react-image:latest', '.' ]
+
+
+
+
+### Publish
+  - id: 'publish'
     name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'gcr.io/devops-analiza/omar-react-image:latest', '.' ]
-
-
-
-# ### Test
-
-
-# ### Publish
-#   - id: 'publish'
-#     name: 'gcr.io/cloud-builders/docker'
-#     entrypoint: 'bash'
-#     args: 
-#       - '-c'
-#       - |
-#           docker push gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}
+    entrypoint: 'bash'
+    args: 
+      - '-c'
+      - |
+          docker push gcr.io/devops-analiza/omar-react-image:latest
 
 
 
