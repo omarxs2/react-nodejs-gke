@@ -29,21 +29,21 @@ steps:
     args: 
       - '-c'
       - |
-          docker build -t gcr.io/devops-analiza/omar-react-image:latest  
+          gcloud builds submit --tag gcr.io/devops-analiza/omar-react-image:latest  
 
 
 
 ### Test
 
 
-### Publish
-  - id: 'publish'
-    name: 'gcr.io/cloud-builders/docker'
-    entrypoint: 'bash'
-    args: 
-      - '-c'
-      - |
-          docker push gcr.io/devops-analiza/omar-react-image
+# ### Publish
+#   - id: 'publish'
+#     name: 'gcr.io/cloud-builders/docker'
+#     entrypoint: 'bash'
+#     args: 
+#       - '-c'
+#       - |
+#           docker push gcr.io/devops-analiza/omar-react-image
 
 
 
