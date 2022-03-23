@@ -42,9 +42,7 @@ steps:
           gcloud container clusters get-credentials "omar-cluster" \
             --project "devops-analiza" \
             --zone "us-west2-a" 
-          
-          sed -i 's|gcr.io/devops-analiza/omar-react-image:.*|gcr.io/devops-analiza/omar-react-image:v1|' manifest.yml
-          
+
           kubectl apply -f manifest.yml
 
 timeout: "1600s"
