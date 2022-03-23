@@ -35,25 +35,25 @@ steps:
 
 
 
-# ### Deploy
-#   - id: 'deploy'
-#     name: 'gcr.io/cloud-builders/gcloud'
-#     env:
-#       - 'KUBECONFIG=/kube/config'
-#     entrypoint: 'bash'
-#     args:
-#       - '-c'
-#       - |
-#           PROJECT=devops-analiza
+### Deploy
+  - id: 'deploy'
+    name: 'gcr.io/cloud-builders/gcloud'
+    env:
+      - 'KUBECONFIG=/kube/config'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+          PROJECT=devops-analiza
         
           
-#           gcloud container clusters get-credentials "omar-cluster" \
-#             --project "devops-analiza" \
-#             --zone "us-west2-a" 
+          gcloud container clusters get-credentials "omar-cluster" \
+            --project "devops-analiza" \
+            --zone "us-west2-a" 
           
-#           sed -i 's|gcr.io/devops-analiza/omar-react-image:.*|gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}|' manifest.yml
+          sed -i 's|gcr.io/devops-analiza/omar-react-image:.*|gcr.io/devops-analiza/omar-react-image:latest|' manifest.yml
           
-#           kubectl apply -f manifest.yml
+          kubectl apply -f manifest.yml
 timeout: "1600s"
 options:
  logging: CLOUD_LOGGING_ONLY
