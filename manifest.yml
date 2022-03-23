@@ -18,7 +18,7 @@ spec:
         app: react-webapp
     spec:
       containers:
-      - image: gcr.io/devops-analiza/omar-react-image:latest
+      - image: gcr.io/devops-analiza/omar-react-image:1.0.0
         name: omar-webapp
         imagePullPolicy: Always
         resources: {}

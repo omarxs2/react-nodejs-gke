@@ -1,11 +1,4 @@
-# steps:
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: [ 'build', '-t', 'gcr.io/devops-analiza/omar-react-image', '.' ]
-# timeout: "1600s"
-# options:
-#  logging: CLOUD_LOGGING_ONLY
-
- # Copyright 2018 Google LLC
+# Copyright 2018 Google LLC
 # 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -25,8 +18,11 @@ steps:
 
   - id: 'build'
     name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}', '.' ]
-
+    entrypoint: 'bash'
+    args: 
+      - '-c'
+      - |
+          docker build -t gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}
 
 
 ### Test
@@ -52,18 +48,17 @@ steps:
     args:
       - '-c'
       - |
-       
           PROJECT=devops-analiza
         
           
           gcloud container clusters get-credentials "omar-cluster" \
             --project "devops-analiza" \
-            --zone "us-west2-a"  
-
-          sed -i 's|gcr.io/devops-analiza/omar-react-image:.*|gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}|' manifest.yaml
-
+            --zone "us-west2-a" 
+          
+          sed -i 's|gcr.io/devops-analiza/omar-react-image:.*|gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}|' manifest.yml
+          
           kubectl get ns production || kubectl create ns production
-          kubectl apply --namespace production --recursive -f manifest.yaml
+          kubectl apply --namespace production --recursive
 timeout: "1600s"
 options:
  logging: CLOUD_LOGGING_ONLY
