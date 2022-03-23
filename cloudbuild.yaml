@@ -29,7 +29,7 @@ steps:
     args: 
       - '-c'
       - |
-          docker build -t gcr.io/devops-analiza/omar-react-image ./src
+          docker build -t gcr.io/devops-analiza/omar-react-image
 
 
 
