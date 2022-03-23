@@ -16,13 +16,12 @@ steps:
 
 ### Build
 
+### Build
+
   - id: 'build'
     name: 'gcr.io/cloud-builders/docker'
-    entrypoint: 'bash'
-    args: 
-      - '-c'
-      - |
-          docker build -t gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}
+    args: [ 'build', '-t', 'gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}', '.' ]
+
 
 
 ### Test
@@ -36,6 +35,7 @@ steps:
       - '-c'
       - |
           docker push gcr.io/devops-analiza/omar-react-image:${SHORT_SHA}
+
 
 
 
