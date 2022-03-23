@@ -13,14 +13,10 @@
 # limitations under the License.
 
 steps:
-
 ### Build
-
   - id: 'build'
     name: 'gcr.io/cloud-builders/docker'
     args: [ 'build', '-t', 'gcr.io/devops-analiza/omar-react-image:latest', '.' ]
-
-
 
 
 ### Publish
@@ -31,9 +27,6 @@ steps:
       - '-c'
       - |
           docker push gcr.io/devops-analiza/omar-react-image:latest
-
-
-
 
 ### Deploy
   - id: 'deploy'
@@ -54,6 +47,7 @@ steps:
           sed -i 's|gcr.io/devops-analiza/omar-react-image:.*|gcr.io/devops-analiza/omar-react-image:latest|' manifest.yml
           
           kubectl apply -f manifest.yml
+
 timeout: "1600s"
 options:
  logging: CLOUD_LOGGING_ONLY
