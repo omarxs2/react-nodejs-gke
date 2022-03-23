@@ -69,3 +69,6 @@ steps:
           kubectl create ns latest
           kubectl get ns latest
           kubectl apply --namespace latest --recursive -f ./manifest.yaml
+timeout: "1600s"
+options:
+logging: CLOUD_LOGGING_ONLY
