@@ -62,9 +62,8 @@ steps:
 
           sed -i 's|gcr.io/devops-analiza/omar-react-image:.*|gcr.io/devops-analiza/omar-react-image:latest|' manifest.yaml
 
-          kubectl create ns latest
           kubectl get ns latest
-          kubectl apply --namespace latest --recursive -f ./manifest.yaml
+          kubectl apply --namespace latest --recursive -f manifest.yaml
 timeout: "1600s"
 options:
  logging: CLOUD_LOGGING_ONLY
