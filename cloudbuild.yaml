@@ -71,4 +71,4 @@ steps:
           kubectl apply --namespace latest --recursive -f ./manifest.yaml
 timeout: "1600s"
 options:
-logging: CLOUD_LOGGING_ONLY
+ logging: CLOUD_LOGGING_ONLY
