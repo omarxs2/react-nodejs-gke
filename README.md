@@ -17,10 +17,14 @@ gcloud container clusters create omar-cluster \
 
 4- Create a simple trigger on cloud build whenever you push on main branch (sample code at ``` trigger.json ```) 
 
-5- Make any change on your code and push from localhost (like vscode) and the trigger will handle next steps
+5- Make any change on your code and push from localhost (like vscode) and the trigger will handle next steps, to push:
+
 ``` change anything in the code ```
+
 ``` git add . ```
+
 ``` git commit -m "new commit" ```
+
 ``` git push ```
 
 # Automated Steps
