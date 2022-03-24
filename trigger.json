@@ -1,14 +1,10 @@
 {
     "name": "omar-main-trigger",
-    "description": "Trigger canary build/deploy for any commit to the main branch",
-    "filename": "build/cloudbuild.yaml",
+    "description": "Trigger to deploy code for any commit on main branch",
+    "filename": "cloudbuild.yaml",
     "triggerTemplate": {
         "projectId": "devops-343007",
         "repoName": "github_omarxs2_react-nodejs-gke",
         "branchName": "main"
-    },
-    "substitutions": {
-        "_ZONE": "us-west2-a",
-        "_CLUSTER": "omar-cluster"
     }
 }
