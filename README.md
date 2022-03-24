@@ -5,13 +5,11 @@ Example Project on how to deploy React App with Nodejs Backend on GCP GKE
 1- Creat your own vpc (my case omar-vpc)
 
 2- Create containter cluster
-```
-gcloud container clusters create omar-cluster \
+``` gcloud container clusters create omar-cluster \
     --project=devops-343007 \
     --zone=us-west2-a \
     --network=omar-vpc
-}
-```
+} ```
 
 3- Miror your gihub code to Google Cloud Repos
 
@@ -40,14 +38,16 @@ On ``` cloudbuild.yaml ``` file, we are handling 3 steps:
 At deploymet step we are:
 
 * getting cluster config
+
 ```  gcloud container clusters get-credentials "omar-cluster" \
         --project "devops-343007" \
-        --zone "us-west2-a" 
-```
+        --zone "us-west2-a" ```
 
 * updating the image path on manifest.yml file using sed command
+
 ``` sed -i 's|gcr.io/devops-343007/omar-react-image:.*|gcr.io/devops-343007/omar-react-image:${SHORT_SHA}|' manifest.yml ```
 
 * running manifest.yml using kubectl
-```kubectl apply -f manifest.yml ```
+
+``` kubectl apply -f manifest.yml ```
     
