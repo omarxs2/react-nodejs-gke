@@ -16,6 +16,10 @@ gcloud container clusters create omar-cluster \
 3- Miror your gihub code to Google Cloud Repos
 
 4- Create a simple trigger on cloud build whenever you push on main branch (sample code at ``` trigger.json ```) 
+```
+gcloud beta builds triggers create cloud-source-repositories \
+  --trigger-config trigger.json
+  ```
 
 5- Make any change on your code and push from localhost (like vscode) and the trigger will handle next steps, to push:
 
