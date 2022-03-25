@@ -1,7 +1,7 @@
 # react-nodejs-gke
 Example Project on how to deploy React App with Nodejs Backend on GCP GKE
 
-# Manual Steps
+# Mannual Steps
 1- Creat your own vpc (my case omar-vpc)
 
 2- Create containter cluster
